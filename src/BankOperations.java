@@ -220,45 +220,43 @@ public class BankOperations {
       System.out.println("Account does not exist!");
       return; // Exit the method if the account does not exist
     }
-    System.out.println("Enter Which currency you would like to choose to deposit with: ")
+    System.out.println("Enter Which currency you would like to choose to deposit with: ");
     System.out.println("1. USD: ");
     System.out.println("2. INR: ");
     int choice = input.nextInt();
-    if(choice==1)
-    {
+    if (choice == 1) {
       System.out.println("Enter the amount you would like to deposit to " + acctIdInput + ": ");
       double depositValue = input.nextDouble();
       // Perform the deposit operation
-    boolean depositMade = false;
-    for (int i = 0; i < depositAccount.getNumAccounts(); i++) {
-      if (depositAccount.accounts[i].getAccountId() == acctIdInput) {
-        depositAccount.accounts[i].deposit(depositValue);
-        depositMade = true;
-        break; // Exit the loop once the deposit is made
+      boolean depositMade = false;
+      for (int i = 0; i < depositAccount.getNumAccounts(); i++) {
+        if (depositAccount.accounts[i].getAccountId() == acctIdInput) {
+          depositAccount.accounts[i].deposit(depositValue);
+          depositMade = true;
+          break; // Exit the loop once the deposit is made
+        }
       }
-    }
-    if (!depositMade) {
-      System.out.println("Deposit operation failed. Account ID not found under the given customer.");
-    }
-    }else
-    {
+      if (!depositMade) {
+        System.out.println("Deposit operation failed. Account ID not found under the given customer.");
+      }
+    } else {
       System.out.println("Enter the amount (in INR) you would like to deposit to " + acctIdInput + ": ");
-    double depositValueInr = input.nextDouble();
-    double depositValueUsd = depositValueInr * INR_TO_USD_RATE; // Convert INR to USD
-    // Perform the deposit operation
-    boolean depositMade = false;
-    for (int i = 0; i < depositAccount.getNumAccounts(); i++) {
-      if (depositAccount.accounts[i].getAccountId() == acctIdInput) {
-        depositAccount.accounts[i].deposit(depositValueUsd);
-        depositMade = true;
-        break; // Exit the loop once the deposit is made
+      double depositValueInr = input.nextDouble();
+      double depositValueUsd = depositValueInr * INR_TO_USD_RATE; // Convert INR to USD
+      // Perform the deposit operation
+      boolean depositMade = false;
+      for (int i = 0; i < depositAccount.getNumAccounts(); i++) {
+        if (depositAccount.accounts[i].getAccountId() == acctIdInput) {
+          depositAccount.accounts[i].deposit(depositValueUsd);
+          depositMade = true;
+          break; // Exit the loop once the deposit is made
+        }
       }
-    }
-    if (!depositMade) {
-      System.out.println("Deposit operation failed. Account ID not found under the given customer.");
+      if (!depositMade) {
+        System.out.println("Deposit operation failed. Account ID not found under the given customer.");
+      }
     }
   }
-    }
 
   /*
    * Withdraw
