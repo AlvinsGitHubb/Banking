@@ -19,7 +19,8 @@ public class CheckingAccount {
 
     public double deposit(double deposit) {
         amount += deposit;
-        System.out.println("New balance: " + amount);
+        amount = Math.round(amount * 100.0) / 100.0;
+        System.out.println("New balance: " + amount + " USD");
         return amount;
     }
 
@@ -30,7 +31,7 @@ public class CheckingAccount {
         } else {
             amount -= withdrawal;
             amount = Math.round(amount * 100.0) / 100.0;
-            System.out.println("New balance: " + amount);
+            System.out.println("New balance: " + amount + " USD");
             return amount;
         }
     }

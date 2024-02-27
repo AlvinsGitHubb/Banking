@@ -6,6 +6,7 @@
  * while initially creating the customer account, the user can also add a new account within their customer
  * account (with a maximum of 5 account per customer account), deposit into an account via account id
  * withdraw from an account via account id, view a customer account, or close the application entirely.
+ * The unique aspect about this code is that it allows the user to deposit in terms of rupees, not just USD.
  */
 import java.util.*;
 
@@ -314,7 +315,7 @@ public class BankOperations {
       for (int i = 0; i < customer.getNumAccounts(); i++) {
         if (customer.accounts[i] != null) { // Ensure the account exists
           System.out.println("Account ID: " + customer.accounts[i].getAccountId() +
-              ", Balance: " + customer.accounts[i].getBalance());
+              ", Balance: " + customer.accounts[i].getBalance() + " USD");
         }
       }
     }
